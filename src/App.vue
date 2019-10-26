@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <div>
+    <!-- <div>
       <p>
         If Element is successfully added to this project, you'll see an
         <code v-text="'<el-button>'"></code>
         below
       </p>
       <el-button>el-button</el-button>
-      <el-input style="width: 220px;" placeholder="请输入内容"></el-input>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      
+    </div> -->
+    <el-input style="width: 220px;" placeholder="请输入内容"></el-input>
+    <HelloWorld msg="Welcome to Your First Project"/>
   </div>
 </template>
 
