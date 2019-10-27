@@ -1,9 +1,7 @@
 <template>
   <div class="container">
-    <h1>{{ msg }}</h1>
-    <CreateItem></CreateItem>
     <el-table
-      :data="tableData"
+      :data="todoList"
       border
       style="width: 100%">
       <el-table-column
@@ -25,36 +23,20 @@
 </template>
 
 <script>
-import CreateItem from './CreateItem.vue';
+
 
 export default {
   name: 'TodoList',
   props: {
-    msg: String
-  },
-  components: {
-    CreateItem
+    msg: String,
+    todoList: {
+      type: Array,
+      defult: []
+    }
   },
   data() {
         return {
-            tableData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }]
-        };
+        }
     },
     mounted() {
         

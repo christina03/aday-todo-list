@@ -4,11 +4,11 @@
         <el-col :span="12">
           <el-form-item label="时间段">
             <el-col :span="11">
-              <el-time-picker type="date" placeholder="选择时间" v-model="form.date1" style="width: 100%;"></el-time-picker>
+              <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.startTime" style="width: 100%;"></el-time-picker>
             </el-col>
             <el-col class="line" :span="2">-</el-col>
             <el-col :span="11">
-              <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+              <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.endTime" style="width: 100%;"></el-time-picker>
             </el-col>
           </el-form-item>
         </el-col>
@@ -22,7 +22,7 @@
         <el-input type="textarea" v-model="form.desc"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button>取消</el-button>
+        <el-button @click="onCancel">取消</el-button>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
       </el-form-item>
     </el-form>
@@ -38,12 +38,8 @@ export default {
       return {
           form: {
               name: '',
-              region: '',
-              date1: '',
-              date2: '',
-              delivery: false,
-              type: [],
-              resource: '',
+              startTime: '',
+              endTime: '',
               desc: ''
           }
       }
@@ -52,6 +48,14 @@ export default {
         
     },
     methods: {
+        onCancel(){
+          this.form = {
+            name: '',
+            startTime: '',
+            endTime: '',
+            desc: ''
+          }
+        },
         // 创建待办项
         onSubmit() {
             // console.log(this.form);

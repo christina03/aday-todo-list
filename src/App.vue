@@ -1,16 +1,30 @@
 <template>
   <div id="app">
-    <TodoList msg="One Day Todo List"/>
+    <h1>{{ msg }}</h1>
+    <CreateItem></CreateItem>
+    <TodoList msg="One Day Todo List" :todoList="todoList"/>
   </div>
 </template>
 
 <script>
-import TodoList from './components/TodoList.vue'
+import TodoList from './components/TodoList.vue';
+import CreateItem from './components/CreateItem.vue';
+import TodoListData from './data/TodoListData.js';
 
 export default {
   name: 'app',
   components: {
-    TodoList
+    TodoList,
+    CreateItem
+  },
+  data(){
+    return {
+      msg: 'One Day Todo List',
+      todoList: TodoListData
+    }
+  },
+  mounted(){
+    
   }
 }
 </script>
