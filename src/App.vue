@@ -9,7 +9,7 @@
 <script>
 import TodoList from './components/TodoList.vue';
 import CreateItem from './components/CreateItem.vue';
-import TodoListData from './data/TodoListData.js';
+import TodoListData from './data/TodoListData.ts';
 
 export default {
   name: 'app',
