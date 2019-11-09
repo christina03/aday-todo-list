@@ -5,9 +5,9 @@
       border
       style="width: 100%">
       <el-table-column
-        prop="date"
+        prop="timeRange"
         label="时间"
-        width="180">
+        width="170">
       </el-table-column>
       <el-table-column
         prop="name"
@@ -15,7 +15,7 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="address"
+        prop="desc"
         label="详细描述">
       </el-table-column>
     </el-table>

@@ -3,12 +3,9 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="时间段">
-            <el-col :span="11">
-              <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.startTime" style="width: 100%;"></el-time-picker>
-            </el-col>
-            <el-col class="line" :span="2">-</el-col>
-            <el-col :span="11">
-              <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.endTime" style="width: 100%;"></el-time-picker>
+            <el-col>
+              <el-time-picker is-range v-model="form.startAndEndTime" range-separator="至" start-placeholder="开始时间"
+              end-placeholder="结束时间" style="width: 100%;" format="HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"></el-time-picker>
             </el-col>
           </el-form-item>
         </el-col>
@@ -29,6 +26,7 @@
 </template>
 
 <script>
+import { storage } from '../data/Storage.ts';
 export default {
   name: 'TodoList',
   props: {
@@ -38,8 +36,7 @@ export default {
       return {
           form: {
               name: '',
-              startTime: '',
-              endTime: '',
+              startAndEndTime: '',
               desc: ''
           }
       }
@@ -58,7 +55,15 @@ export default {
         },
         // 创建待办项
         onSubmit() {
-            // console.log(this.form);
+            let listDataArr = JSON.parse(localStorage.getItem(storage.LOCAL_LIST_DATA)) || [];
+            let obj = {
+              timeRange: this.form.startAndEndTime.join('至'),
+              name: this.form.name,
+              desc: this.form.desc
+            }
+            listDataArr.push(obj);
+            localStorage.setItem(storage.LOCAL_LIST_DATA, JSON.stringify(listDataArr));
+            this.$emit('createBtn');
         }
     }
 }

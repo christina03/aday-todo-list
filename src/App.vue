@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
-    <CreateItem></CreateItem>
+    <CreateItem @createBtn="createBtn"></CreateItem>
     <TodoList msg="One Day Todo List" :todoList="todoList"/>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import TodoList from './components/TodoList.vue';
 import CreateItem from './components/CreateItem.vue';
-import TodoListData from './data/TodoListData.ts';
+import { storage } from './data/Storage.ts';
 
 export default {
   name: 'app',
@@ -20,11 +20,16 @@ export default {
   data(){
     return {
       msg: 'One Day Todo List',
-      todoList: TodoListData
+      todoList: JSON.parse(localStorage.getItem(storage.LOCAL_LIST_DATA)) || []
     }
   },
   mounted(){
     
+  },
+  methods: {
+    createBtn(){
+      this.todoList = JSON.parse(localStorage.getItem(storage.LOCAL_LIST_DATA));
+    }
   }
 }
 </script>
