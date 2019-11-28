@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import App from './App.vue'
 
 import {
   Button,
@@ -47,6 +46,10 @@ Vue.use(DatePicker);
 
 Vue.config.productionTip = false
 
+import { homeRouter } from './routers/index';
+
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+    el: '#app',
+    router: homeRouter,
+    template: '<router-view></router-view>'
+});

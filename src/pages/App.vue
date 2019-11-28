@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import TodoList from './components/TodoList.vue';
-import CreateItem from './components/CreateItem.vue';
-import { storage } from './data/Storage.ts';
+import TodoList from '../components/TodoList.vue';
+import CreateItem from '../components/CreateItem.vue';
+import { storage } from '../data/Storage.ts';
 
 export default {
   name: 'app',
