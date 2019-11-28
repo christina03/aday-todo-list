@@ -20,7 +20,8 @@ import {
   Table,
   TableColumn,
   Pagination,
-  Dialog
+  Dialog,
+  Divider
 } from 'element-ui';
 
 Vue.use(Button);
@@ -43,6 +44,7 @@ Vue.use(Pagination);
 Vue.use(Dialog);
 Vue.use(TimePicker);
 Vue.use(DatePicker);
+Vue.use(Divider);
 
 Vue.config.productionTip = false
 
