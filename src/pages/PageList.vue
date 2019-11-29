@@ -20,11 +20,13 @@
         </div>
     </div>
     <div>
-      <div class="main-list-col">
-          <div class="list-pages listpage-latest">
-              <a href="javascript:" class="pre-page">上一页</a>
-              <div class="pagesin"><a href="javascript:" rel="1" class="active-pages">1</a><a href="javascript:" rel="2">2</a><a href="javascript:" rel="3">3</a><a href="javascript:" rel="4">4</a><a href="javascript:" rel="5">5</a><a href="javascript:" rel="6">6</a><a href="javascript:" rel="7">7</a><a href="javascript:" rel="8">8</a><a href="javascript:" rel="9">9</a><a href="javascript:" rel="10">10</a><a href="javascript:" rel="11">11</a><a href="javascript:" rel="12">12</a><a href="javascript:" rel="13">13</a><a href="javascript:" rel="14">14</a><a href="javascript:" rel="15">15</a><a href="javascript:" rel="16">16</a><a href="javascript:" rel="17">17</a><a href="javascript:" rel="18">18</a><a href="javascript:" rel="19">19</a><a href="javascript:" rel="20">20</a><a href="javascript:" rel="21">21</a><a href="javascript:" rel="22">22</a><a href="javascript:" rel="23">23</a></div>
-              <a href="javascript:" class="next-page">下一页</a>
+      <div class="pages">
+          <div class="list-pages">
+              <a class="pre-page" @click="prevPage">上一页</a>
+              <div class="pagesin">
+                <a v-for="item in currentPageList" :class="{ 'active-pages' : item === currentPage }" :key="item" @click="onPage(item)">{{ item }}</a>
+              </div>
+              <a class="next-page" @click="nextPage">下一页</a>
           </div>
       </div>
     </div>
@@ -85,15 +87,53 @@ export default {
           modelDetail: ['漠漠黄云，湿透木棉裘。', '都道无人愁似我，今夜雪，有梅花，似我愁”。', '可惜，这里没有梅花，唯有那个斜挂的似眉弯月，清冷地看着我！'],
           id: 19
         }]
-      }
+      },
+      currentPage: 1, // 当前显示页码
+      totalPage: 0, // 总页码
+      currentPageList: [], // 当前显示的数组
     }
   },
   mounted(){
-    // console.log(pageListData);
-    // this.pageDta = pageListData;
+    this.totalPage = Math.ceil(this.pageData.totalElements/this.pageData.pageSize);
+    this.initPageList();
   },
   methods: {
-    
+    prevPage(){
+      if(this.currentPage>1){
+        this.currentPage--;
+        this.initPageList();
+      }
+    },
+    nextPage(){
+      if(this.currentPage < this.totalPage){
+        this.currentPage++;
+        this.initPageList();
+      }
+    },
+    initPageList(){
+        let pageSize = this.pageData.pageSize; // 页码分组
+        let totalPage = this.totalPage;
+        let result = [];
+        let totalArr = []; 
+        for(var i = 1; i <= totalPage; i++){ // 将所有页码放在一个数组里
+            totalArr.push(i);
+        }
+        for (var n = 0, j = totalPage; n <= j; n += pageSize) { // 将页码分组
+            result.push(totalArr.slice(n, n + pageSize));
+        }
+        result.map(list => {
+            list.map(item => {
+                if(item === this.currentPage){ // 判断当前页面是在哪个数组里，然后渲染当前组的页面
+                    this.currentPageList = list;
+                }
+                return item;
+            });
+            return list;
+        });
+    },
+    onPage(page){
+      this.currentPage = page;
+    }
   }
 }
 </script>
@@ -108,19 +148,14 @@ export default {
   margin: 0 auto;
 }
 /*页码*/
-.main-list-col{ 
+.pages{ 
   text-align: center;
   padding:  16px 0;
   font-size: 16px;
   color: #3B445C;
   font-family:PingFangSC-Regular,PingFang SC;
 }
-/* div{
-  display: inline-block;
-} */
-.pages{
-  cursor: pointer;
-}
+
 .pagesin{
   margin:  0 19px;
   width: 355px;
