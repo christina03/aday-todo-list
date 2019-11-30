@@ -140,7 +140,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .page-list {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -166,20 +166,19 @@ export default {
   position: relative;
   top: 6px;
   display: inline-block;
-  
-}
-a{
-  display: inline-block;
-  line-height:22px;
-  color: #3B445C;
-  min-width: 35px;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-}
-.active-pages{
-  background: #F33F3E;
-  color: #fff;
+  a{
+    display: inline-block;
+    line-height:22px;
+    color: #3B445C;
+    min-width: 35px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .active-pages{
+    background: #F33F3E;
+    color: #fff;
+  }
 }
 
 .page-item{
