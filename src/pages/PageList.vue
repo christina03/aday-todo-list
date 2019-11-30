@@ -27,6 +27,8 @@
                 <a v-for="item in currentPageList" :class="{ 'active-pages' : item === currentPage }" :key="item" @click="onPage(item)">{{ item }}</a>
               </div>
               <a class="next-page" @click="nextPage">下一页</a>
+              <a class="page-item">第{{currentPage}}页</a>
+              <a class="page-item">总共{{totalPage}}页</a>
           </div>
       </div>
     </div>
@@ -178,6 +180,10 @@ a{
 .active-pages{
   background: #F33F3E;
   color: #fff;
+}
+
+.page-item{
+  margin-left: 20px;
 }
 
 /**列表 */
