@@ -22,6 +22,12 @@ export default [
         name: 'vmodelDemo',
         path: '/VueDemo/vmodelDemo',
         component: () => import('@/pages/VueDemo/VmodelDemo.vue'),
-        meta: { title: 'JSON.stringify()demo' }
+        meta: { title: 'VmodelDemo' }
+    },
+    {
+        name: 'vmodelDemo',
+        path: '/JsDemo/JsDataType',
+        component: () => import('@/pages/JsDemo/JsDataType.vue'),
+        meta: { title: 'JS数据类型' }
     }
 ];
