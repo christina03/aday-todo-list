@@ -11,5 +11,11 @@ export default [
         path: '/pageList',
         component: () => import('@/pages/PageList.vue'),
         meta: { title: '分页demo' }
+    },
+    {
+        name: 'stringifyDemo',
+        path: '/stringifyDemo',
+        component: () => import('@/pages/StringifyDemo.vue'),
+        meta: { title: 'JSON.stringify()demo' }
     }
 ];
