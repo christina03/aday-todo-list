@@ -14,14 +14,14 @@ export default [
     },
     {
         name: 'stringifyDemo',
-        path: '/stringifyDemo',
-        component: () => import('@/pages/StringifyDemo.vue'),
+        path: '/JsDemo/stringifyDemo',
+        component: () => import('@/pages/JsDemo/StringifyDemo.vue'),
         meta: { title: 'JSON.stringify()demo' }
     },
     {
         name: 'vmodelDemo',
-        path: '/vmodelDemo',
-        component: () => import('@/pages/VmodelDemo.vue'),
+        path: '/VueDemo/vmodelDemo',
+        component: () => import('@/pages/VueDemo/VmodelDemo.vue'),
         meta: { title: 'JSON.stringify()demo' }
     }
 ];
