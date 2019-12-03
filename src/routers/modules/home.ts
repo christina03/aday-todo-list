@@ -17,5 +17,11 @@ export default [
         path: '/stringifyDemo',
         component: () => import('@/pages/StringifyDemo.vue'),
         meta: { title: 'JSON.stringify()demo' }
+    },
+    {
+        name: 'vmodelDemo',
+        path: '/vmodelDemo',
+        component: () => import('@/pages/VmodelDemo.vue'),
+        meta: { title: 'JSON.stringify()demo' }
     }
 ];
