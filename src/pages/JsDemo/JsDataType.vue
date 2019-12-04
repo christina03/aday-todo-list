@@ -90,28 +90,41 @@ export default {
         let val = item.val;
         let instanceofResult;
         let constructorResult;
-        if(item.name === 'Undefined' || item.name === 'Null'){
-          constructorResult = '-';
-        } else {
-          constructorResult = (val).constructor;
-        }
 
         if(item.name === 'Number'){
           instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Number);
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Number);
         } else if(item.name === 'String'){
           instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof String);
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === String);
         } else if(item.name === 'Boolean'){
           instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Boolean);
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Boolean);
         } else if(item.name === 'Array'){
           instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Array);
-        } else if(item.name === 'Object' || item.name === 'Undefined' || item.name === 'Null'){
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Array);
+        } else if(item.name === 'Object'){
           instanceofResult = `[${item.val} instanceof Object]:` +  JSON.stringify(val instanceof Object);
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Object);
+        } else if(item.name === 'Undefined' || item.name === 'Null'){
+          instanceofResult = `[${item.val} instanceof Object]:` +  JSON.stringify(val instanceof Object);
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:-`;
+        } else if(item.name === 'Function'){
+          instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Function);
+          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Function);
         }
+
+        // if(item.name === 'Undefined' || item.name === 'Null'){
+        //   constructorResult = `[(${item.val}).constructor === ${item.name}]:-`;
+        // } else {
+        //   constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Number);
+        // }
+        
         arr.push({
           type: item.name,
           typeofResut: `[typeof ${item.val}]:` + typeof item.val,
           instanceofResult: instanceofResult,
-          constructorResult: `[(${item.val}).constructor]:` + constructorResult
+          constructorResult: constructorResult
         });
         return item;
       });
