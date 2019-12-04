@@ -24,6 +24,10 @@
           prop="constructorResult"
           label="constructor">
         </el-table-column>
+        <el-table-column
+          prop="toStringResult"
+          label="Object.prototype.toString.call">
+        </el-table-column>
       </el-table>
     </div>
   </div>
@@ -36,7 +40,7 @@ export default {
   },
   data(){
     return {
-      msg: 'JS类型判断',
+      msg: 'JS类型判断对比',
       dataList: [
         {
           name: 'Number',
@@ -81,50 +85,43 @@ export default {
   },
   methods: {
     initData(){
-      // function Person(){}
-      // var Tom = new Person();
-      // console.log(Tom.constructor);
       let arr = [];
       this.dataList.map(item => {
-        // let name = item.name;
+        let objTostringFn = Object.prototype.toString;
         let val = item.val;
         let instanceofResult;
         let constructorResult;
-
+        let toStringResult = `Object.prototype.toString.call(${val}):` + objTostringFn.call(val);
+        
         if(item.name === 'Number'){
-          instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Number);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Number);
+          instanceofResult = `${item.val} instanceof ${item.name}:` +  JSON.stringify(val instanceof Number);
+          constructorResult = `(${item.val}).constructor === ${item.name}:` + JSON.stringify((val).constructor === Number);
         } else if(item.name === 'String'){
-          instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof String);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === String);
+          instanceofResult = `${item.val} instanceof ${item.name}:` +  JSON.stringify(val instanceof String);
+          constructorResult = `(${item.val}).constructor === ${item.name}:` + JSON.stringify((val).constructor === String);
         } else if(item.name === 'Boolean'){
-          instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Boolean);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Boolean);
+          instanceofResult = `${item.val} instanceof ${item.name}:` +  JSON.stringify(val instanceof Boolean);
+          constructorResult = `(${item.val}).constructor === ${item.name}:` + JSON.stringify((val).constructor === Boolean);
         } else if(item.name === 'Array'){
-          instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Array);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Array);
+          instanceofResult = `${item.val} instanceof ${item.name}:` +  JSON.stringify(val instanceof Array);
+          constructorResult = `(${item.val}).constructor === ${item.name}:` + JSON.stringify((val).constructor === Array);
         } else if(item.name === 'Object'){
-          instanceofResult = `[${item.val} instanceof Object]:` +  JSON.stringify(val instanceof Object);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Object);
+          instanceofResult = `${item.val} instanceof Object:` +  JSON.stringify(val instanceof Object);
+          constructorResult = `(${item.val}).constructor === ${item.name}:` + JSON.stringify((val).constructor === Object);
         } else if(item.name === 'Undefined' || item.name === 'Null'){
-          instanceofResult = `[${item.val} instanceof Object]:` +  JSON.stringify(val instanceof Object);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:-`;
+          instanceofResult = `${item.val} instanceof Object:` +  JSON.stringify(val instanceof Object);
+          constructorResult = `(${item.val}).constructor === ${item.name}:-`;
         } else if(item.name === 'Function'){
-          instanceofResult = `[${item.val} instanceof ${item.name}]:` +  JSON.stringify(val instanceof Function);
-          constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Function);
+          instanceofResult = `${item.val} instanceof ${item.name}:` +  JSON.stringify(val instanceof Function);
+          constructorResult = `(${item.val}).constructor === ${item.name}:` + JSON.stringify((val).constructor === Function);
         }
-
-        // if(item.name === 'Undefined' || item.name === 'Null'){
-        //   constructorResult = `[(${item.val}).constructor === ${item.name}]:-`;
-        // } else {
-        //   constructorResult = `[(${item.val}).constructor === ${item.name}]:` + JSON.stringify((val).constructor === Number);
-        // }
         
         arr.push({
           type: item.name,
-          typeofResut: `[typeof ${item.val}]:` + typeof item.val,
+          typeofResut: `typeof ${item.val}:` + typeof item.val,
           instanceofResult: instanceofResult,
-          constructorResult: constructorResult
+          constructorResult: constructorResult,
+          toStringResult: toStringResult
         });
         return item;
       });
