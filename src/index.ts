@@ -21,7 +21,8 @@ import {
   TableColumn,
   Pagination,
   Dialog,
-  Divider
+  Divider,
+  InputNumber,
 } from 'element-ui';
 
 Vue.use(Button);
@@ -45,6 +46,7 @@ Vue.use(Dialog);
 Vue.use(TimePicker);
 Vue.use(DatePicker);
 Vue.use(Divider);
+Vue.use(InputNumber);
 
 Vue.config.productionTip = false
 

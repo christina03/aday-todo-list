@@ -29,17 +29,17 @@ export default {
     }
   },
   mounted(){
-    // let test = {
-    //   a: '123',
-    //   name: 'test',
-    //   desc: [1,2,"bb"],
-    //   param: {
-    //     a1: 234,
-    //     b2: 'ceshi',
-    //     c3: true
-    //   }
-    // };
-    let test = true;
+    let test = {
+      a: '123',
+      name: 'test',
+      desc: [1,2,"bb"],
+      param: {
+        a1: 234,
+        b2: 'ceshi',
+        c3: true
+      }
+    };
+    // let test = true;
     this.stringObj = this.mySelfStringify(test);
     this.originalStr = JSON.stringify(test);
   },

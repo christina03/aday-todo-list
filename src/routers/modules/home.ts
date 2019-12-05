@@ -29,5 +29,11 @@ export default [
         path: '/JsDemo/JsDataType',
         component: () => import('@/pages/JsDemo/JsDataType.vue'),
         meta: { title: 'JS数据类型' }
+    },
+    {
+        name: 'vmodelDemo',
+        path: '/JsDemo/ThousandsSeparator',
+        component: () => import('@/pages/JsDemo/ThousandsSeparator.vue'),
+        meta: { title: '数据千分位分割' }
     }
 ];
