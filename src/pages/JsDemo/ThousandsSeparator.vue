@@ -15,7 +15,7 @@
     <h3>方法二：toLocaleString()</h3>
     <div class="page-list-box">
         <span class="page-list-box__label">输入数字：</span>
-        <el-input-number v-model="num3"  controls-position="right" :min="0" :step="1" :precision="2" :controls="false"></el-input-number>
+        <el-input-number v-model="num3"  controls-position="right" :min="0" :step="1" :precision="5" :controls="false"></el-input-number>
         <span class="page-list-box__result">{{spNum3}} 元</span>
     </div>
     <div class="page-list-box">
@@ -47,7 +47,7 @@ export default {
       msg: '千分位分隔符',
       num1: 1234567,
       num2: 57684.3445,
-      num3: 33456000.90,
+      num3: 33456000.909912,
       num4: 10000000.2,
       num5: 1000000000,
       num6: 100000000.500,
