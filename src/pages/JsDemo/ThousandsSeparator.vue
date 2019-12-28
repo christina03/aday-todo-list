@@ -34,10 +34,12 @@
         <el-input-number v-model="num6"  controls-position="right" :min="0" :step="1" :precision="3" :controls="false"></el-input-number>
         <span class="page-list-box__result">{{spNum6}} 元</span>
     </div>
+    <div>{{times}}</div>
   </div>
 </template>
 
 <script>
+import times from '@/lib/utils/performance.js';
 export default {
   components: {
     
@@ -56,7 +58,8 @@ export default {
       spNum3: '',
       spNum4: '',
       spNum5: '',
-      spNum6: ''
+      spNum6: '',
+      times: times
     }
   },
   mounted(){

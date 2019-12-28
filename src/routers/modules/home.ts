@@ -25,13 +25,13 @@ export default [
         meta: { title: 'VmodelDemo' }
     },
     {
-        name: 'vmodelDemo',
+        name: 'JsDataType',
         path: '/JsDemo/JsDataType',
         component: () => import('@/pages/JsDemo/JsDataType.vue'),
         meta: { title: 'JS数据类型' }
     },
     {
-        name: 'vmodelDemo',
+        name: 'ThousandsSeparator',
         path: '/JsDemo/ThousandsSeparator',
         component: () => import('@/pages/JsDemo/ThousandsSeparator.vue'),
         meta: { title: '数据千分位分割' }
